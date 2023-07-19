@@ -6,6 +6,10 @@ This is a simple script to clean up your Docker host. It will:
 * Remove all networks not used by at least one container
 * Remove all unused images
 
+> If you find this useful, please consider starring the project on [GitHub](https://github.com/Anttek-io/docker-gc).
+
+---
+
 ## Usage
 
 ### Docker
@@ -48,9 +52,13 @@ ansible-playbook -b -i inventory/inventory playbooks/docker-gc.yml
 ansible-playbook -b -i inventory/inventory playbooks/docker-gc-rm.yml
 ```
 
+---
+
 ## License
 
 [MIT](LICENSE)
 
 [//]: # (README.md ends here)
 [//]: # "vi: set ft=markdown :"
+
+---
