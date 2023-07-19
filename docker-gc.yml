@@ -7,7 +7,6 @@ x-env: &env
 services:
   docker-gc:
     image: anttek/docker-gc
-    build: .
     environment:
       <<: *env
     volumes:
