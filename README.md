@@ -34,7 +34,7 @@ CRON_SCHEDULE="0 0 * * *" # every day at midnight
 TZ=UTC # timezone
 EOF
 
-docker compose up -d
+docker compose -f docker-gc.yml up -d
 ```
 
 ### Ansible
