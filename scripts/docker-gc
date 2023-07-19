@@ -1,5 +1,15 @@
 #!/bin/sh
 
+# Yes, I know about docker system prune -a -f
+# But it removes all volumes that are not used by at least one container
+# at the moment. So, if you have a stopped container that uses a volume,
+# it will be removed. This script removes only unused images, networks
+# and containers. It is useful for development, when you have a lot of
+# stopped containers and unused images and networks.
+# Your volumes - your responsibility. Because volumes are the only
+# persistent thing in Docker. If you remove a volume, you will lose
+# all data in it. So, be careful with docker system prune -a -f.
+
 echo "------------------------------------------------------------"
 echo "Removing all stopped containers"
 docker container prune -f

@@ -6,7 +6,11 @@ This is a simple script to clean up your Docker host. It will:
 * Remove all networks not used by at least one container
 * Remove all unused images
 
-> If you find this useful, please consider starring the project on [GitHub](https://github.com/Anttek-io/docker-gc).
+> **Note:** `docker system prune` is not used because it will remove all unused data (i.e. volumes) by default.
+> Everythin except volumes can be recovered, but persistent data can not.
+> If you want to remove all unused data, please use `docker system prune -a` by yourself.
+
+> **If you find this useful, please consider starring the project on [GitHub](https://github.com/Anttek-io/docker-gc).**
 
 ---
 
