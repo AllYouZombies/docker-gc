@@ -1,0 +1,2 @@
+TZ: UTC
+CRON_SCHEDULE: "0 0 * * *"

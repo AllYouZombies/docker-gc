@@ -1,0 +1,6 @@
+.env
+inventory/*
+!inventory/sample
+
+.idea
+venv

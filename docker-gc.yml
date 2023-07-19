@@ -1,0 +1,20 @@
+version: "3.8"
+
+x-env: &env
+  TZ: ${TZ:-UTC}
+  CRON_SCHEDULE: ${CRON_SCHEDULE:-*/5 * * * *}
+
+services:
+  docker-gc:
+    image: anttek/docker-gc
+    build: .
+    environment:
+      <<: *env
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    deploy:
+      mode: global
+      restart_policy:
+        condition: any
+        delay: 5s
+        window: 120s

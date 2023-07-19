@@ -1,0 +1,27 @@
+---
+- hosts: all
+  name: "Install Docker garbage collector"
+  tasks:
+    - name: "Ensure $HOME/.docker directory exists"
+      file:
+        path: "{{ ansible_env.HOME }}/.docker"
+        state: directory
+        mode: 0700
+    - name: "Ensure docker-gc script is present"
+      copy:
+        src: ../scripts/docker-gc
+        dest: "{{ ansible_env.HOME }}/.docker/docker-gc"
+        mode: 0700
+    - name: "Create cron file if not exists"
+      file:
+        path: /etc/cron.d/docker-gc
+        state: touch
+        mode: 0644
+    - name: "Add cron job"
+      copy:
+        dest: /etc/cron.d/docker-gc
+        content: |
+          SHELL=/bin/bash
+          PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
+          {{ CRON_SCHEDULE }} root /bin/bash -c "echo $(date) >> {{ ansible_env.HOME }}/.docker/docker-gc.log && {{ ansible_env.HOME }}/.docker/docker-gc >> {{ ansible_env.HOME }}/.docker/docker-gc.log"
+           

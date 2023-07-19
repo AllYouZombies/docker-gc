@@ -1,0 +1,22 @@
+---
+- hosts: all
+  name: "Uninstall Docker garbage collector"
+  tasks:
+    - name: "Remove cron file if exists"
+      file:
+        path: /etc/cron.d/docker-gc
+        state: absent
+    - name: "Remove docker-gc script if exists"
+      file:
+        path: "{{ ansible_env.HOME }}/.docker/docker-gc"
+        state: absent
+    - name: "Check if $HOME/.docker directory is empty"
+      find:
+        paths: "{{ ansible_env.HOME }}/.docker"
+        patterns: "*"
+      register: docker_gc_dir
+    - name: "Remove $HOME/.docker directory if empty"
+      file:
+        path: "{{ ansible_env.HOME }}/.docker"
+        state: absent
+      when: docker_gc_dir.matched == 0
