@@ -1,7 +1,7 @@
 FROM alpine:3.18
 
 # Add docker client to image
-RUN apk add --update docker && \
+RUN apk add --update docker tzdata && \
     rm -rf /var/cache/apk/* && \
     rm -rf /tmp/*
 
