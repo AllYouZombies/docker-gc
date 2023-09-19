@@ -10,17 +10,17 @@
 # all data in it. So, be careful with docker system prune -a -f.
 
 echo "------------------------------------------------------------"
-echo "Removing all stopped containers"
+printf "\n%s\nRemoving all stopped containers" "$(date)"
 docker container prune -f
-echo "Removed all stopped containers"
+printf "\n%s\nRemoved all stopped containers" "$(date)"
 echo
 echo "------------------------------------------------------------"
-echo "Removing all unused images"
+printf "\n%s\nRemoving all unused images" "$(date)"
 docker image prune -a -f
-echo "Removed all unused images"
+printf "\n%s\nRemoved all unused images" "$(date)"
 echo
 echo "------------------------------------------------------------"
-echo "Removing all unused networks"
+printf "\n%s\nRemoving all unused networks" "$(date)"
 docker network prune -f
-echo "Removed all unused networks"
+printf "\n%s\nRemoved all unused networks" "$(date)"
 echo

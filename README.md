@@ -38,16 +38,16 @@ CRON_SCHEDULE="0 0 * * *" # every day at midnight
 TZ=UTC # timezone
 EOF
 
-docker compose -f docker-gc.yml up -d
+docker compose up -d
 ```
 
 ### Ansible
 
 ```bash
-cp -R inventory/sample inventory/inventory
-# edit files in inventory/inventory
+cp -R inventory_sample inventory
+# edit files in inventory directory
 
-ansible-playbook -b -i inventory/inventory playbooks/docker-gc.yml
+ansible-playbook playbooks/docker-gc.yml -b
 ```
 
 #### Remove
