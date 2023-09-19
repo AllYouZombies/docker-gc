@@ -53,7 +53,7 @@ ansible-playbook playbooks/docker-gc.yml -b
 #### Remove
 
 ```bash
-ansible-playbook -b -i inventory/inventory playbooks/docker-gc-rm.yml
+ansible-playbook playbooks/docker-gc-rm.yml -b
 ```
 
 ---
